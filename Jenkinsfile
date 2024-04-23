@@ -53,23 +53,23 @@ pipeline {
          stage("Docker build"){
 	       steps {
                     sh 'docker version'
-                    sh 'docker build -t devopswithdeepak-docker-webapp-demo .'
+                    sh 'docker build -t devopswithguru-docker-webapp-demo .'
                     sh 'docker image list'
-                    sh 'docker tag devopswithdeepak-docker-webapp-demo deepak2717/devopswithdeepak-docker-webapp-demo:devopswithdeepak-docker-webapp-demo'
+                    sh 'docker tag devopswithguru-docker-webapp-demo guru15/devopswithguru-docker-webapp-demo:devopswithguru-docker-webapp-demo'
 		
                }
           }
          stage("Docker Login") {    
                steps {
 	            withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'DOCKER_HUB_PASSWORD')]) {   
-                     sh 'docker login -u deepak2717 -p $DOCKER_HUB_PASSWORD'
+                     sh 'docker login -u guru15 -p $DOCKER_HUB_PASSWORD'
 	       }
               }
          }
 
          stage("Push Image to Docker Hub"){
                steps {
-                     sh 'docker push  deepak2717/devopswithdeepak-docker-webapp-demo:devopswithdeepak-docker-webapp-demo'
+                     sh 'docker push  guru15/devopswithdeepak-docker-webapp-demo:devopswithdeepak-docker-webapp-demo'
                 }
          }
          stage('Plan') {
