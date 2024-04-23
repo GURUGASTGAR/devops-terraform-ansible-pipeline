@@ -2,7 +2,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "devops-project-terrafom-backend-guru"
+    bucket = "tf-buket-batch759-guru"
     key    = "project/remote.tfstate"
     region = "us-east-1"
   }
